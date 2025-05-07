@@ -54,6 +54,11 @@ service:
   # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
   port: 3001
 
+grpcService:
+  enabled: true
+  type: grpc
+  port: 50051
+
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
   enabled: false
@@ -105,21 +110,21 @@ autoscaling:
 
 
 # Additional volumes on the output Deployment definition.
-volumes:
-- name: nginx-volumes
-  secret:
-    secretName: nginx
-    optional: false
+volumes: []
+# - name: nginx-volumes
+  # secret:
+    # secretName: nginx
+    # optional: false
 # - name: foo
 #   secret:
 #     secretName: mysecret
 #     optional: false
 
 # Additional volumeMounts on the output Deployment definition.
-volumeMounts:
-- name: nginx-volumes
-  mountPath: "/etc/nginx-volumes"
-  readOnly: true
+volumeMounts: []
+# - name: nginx-volumes
+  # mountPath: "/etc/nginx-volumes"
+  # readOnly: true
 # - name: foo
 #   mountPath: "/etc/foo"
 #   readOnly: true
@@ -131,3 +136,5 @@ tolerations: []
 affinity: {}
 
 secretRef: nginx
+
+appName: nginx
