@@ -89,6 +89,9 @@ livenessProbe:
   httpGet:
     path: /
     port: http
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  failureThreshold: 3
 readinessProbeEnabled: false
 readinessProbe:
   httpGet:
