@@ -34,6 +34,9 @@ spec:
       serviceAccountName: {{ include "chartgo.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+    {{- if .Values.runtimeClassEnabled }}
+      runtimeClassName: {{ .Values.runtimeClassName }}
+    {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
